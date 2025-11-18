@@ -48,11 +48,6 @@ export default function ChapterSection({ chapter, parts }: ChapterSectionProps) 
                 <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-serif font-semibold mb-2 md:mb-3 lg:mb-4 leading-tight">
                   {chapter.title}
                 </h2>
-                {chapter.summary && (
-                  <p className="text-xs md:text-sm lg:text-base font-serif italic text-foreground-muted leading-relaxed max-w-2xl">
-                    {chapter.summary}
-                  </p>
-                )}
               </div>
 
               {/* Story content with spacing */}
