@@ -16,7 +16,7 @@ export const chapters: Chapter[] = [
     themes: "rigged system, survival principles, structural countermeasures",
     visualizationDescription: "A soft, slowly emerging grid or waveform representing the signal cutting through 21st century noise.",
     artifactId: "introduction",
-    narrative: "A brief personal note: Transitioning out of a rigid, disciplined environment into a world engineered for drift revealed just how hostile the modern landscape is to long-term craft. The contrast was immediate and clarifying. What felt possible under one set of conditions became nearly impossible under another, not because capability changed, but because the environment did. Ancient Japanese craft principles offered a counterweight: not inspiration, but infrastructure. Systems that functioned as survival mechanisms for people doing hard work over decades when everything pushed them to quit.",
+
   },
   {
     id: 1,
