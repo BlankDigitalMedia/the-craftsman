@@ -36,8 +36,7 @@ const IntroductionArtifact: React.FC<ArtifactProps> = ({
     let animationFrameId: number;
 
     const draw = () => {
-      ctx.fillStyle = "#F0EEE6";
-      ctx.fillRect(0, 0, width, height);
+      ctx.clearRect(0, 0, width, height);
 
       ctx.strokeStyle = "#222222";
       ctx.lineWidth = 1;
@@ -101,8 +100,7 @@ const WabiSabiArtifact: React.FC<ArtifactProps> = ({
     let animationFrameId: number;
 
     const draw = () => {
-      ctx.fillStyle = "#F0EEE6";
-      ctx.fillRect(0, 0, width, height);
+      ctx.clearRect(0, 0, width, height);
 
       const centerX = width / 2;
       const centerY = height / 2;
@@ -175,8 +173,7 @@ const ShokuninArtifact: React.FC<ArtifactProps> = ({
     let animationFrameId: number;
 
     const draw = () => {
-      ctx.fillStyle = "#F0EEE6";
-      ctx.fillRect(0, 0, width, height);
+      ctx.clearRect(0, 0, width, height);
 
       const rows = 5;
       const cols = 5;
@@ -255,8 +252,7 @@ const ConclusionArtifact: React.FC<ArtifactProps> = ({
     let animationFrameId: number;
 
     const draw = () => {
-      ctx.fillStyle = "#F0EEE6";
-      ctx.fillRect(0, 0, width, height);
+      ctx.clearRect(0, 0, width, height);
 
       const centerX = width / 2;
       const centerY = height / 2;
@@ -338,8 +334,7 @@ const DoArtifact: React.FC<ArtifactProps> = ({
     let animationFrameId: number;
 
     const draw = () => {
-      ctx.fillStyle = "#F0EEE6";
-      ctx.fillRect(0, 0, width, height);
+      ctx.clearRect(0, 0, width, height);
 
       ctx.strokeStyle = "#222222";
       ctx.lineWidth = 1.5;
@@ -404,8 +399,7 @@ const KaizenArtifact: React.FC<ArtifactProps> = ({
     let animationFrameId: number;
 
     const draw = () => {
-      ctx.fillStyle = "#F0EEE6";
-      ctx.fillRect(0, 0, width, height);
+      ctx.clearRect(0, 0, width, height);
 
       ctx.strokeStyle = "#222222";
       ctx.lineWidth = 1;
@@ -472,8 +466,7 @@ const MaArtifact: React.FC<ArtifactProps> = ({
     let animationFrameId: number;
 
     const draw = () => {
-      ctx.fillStyle = "#F0EEE6";
-      ctx.fillRect(0, 0, width, height);
+      ctx.clearRect(0, 0, width, height);
 
       ctx.strokeStyle = "#222222";
       ctx.lineWidth = 1;
@@ -536,8 +529,7 @@ const GanbaruArtifact: React.FC<ArtifactProps> = ({
     let animationFrameId: number;
 
     const draw = () => {
-      ctx.fillStyle = "#F0EEE6";
-      ctx.fillRect(0, 0, width, height);
+      ctx.clearRect(0, 0, width, height);
 
       ctx.strokeStyle = "#222222";
       ctx.lineWidth = 1.5;
@@ -604,8 +596,7 @@ const FudoshinArtifact: React.FC<ArtifactProps> = ({
     let animationFrameId: number;
 
     const draw = () => {
-      ctx.fillStyle = "#F0EEE6";
-      ctx.fillRect(0, 0, width, height);
+      ctx.clearRect(0, 0, width, height);
 
       const centerX = width / 2;
       const centerY = height / 2;
@@ -680,8 +671,7 @@ const ShibumiArtifact: React.FC<ArtifactProps> = ({
     let animationFrameId: number;
 
     const draw = () => {
-      ctx.fillStyle = "#F0EEE6";
-      ctx.fillRect(0, 0, width, height);
+      ctx.clearRect(0, 0, width, height);
 
       const centerX = width / 2;
       const centerY = height / 2;
@@ -761,8 +751,7 @@ const MushinArtifact: React.FC<ArtifactProps> = ({
     let animationFrameId: number;
 
     const draw = () => {
-      ctx.fillStyle = "#F0EEE6";
-      ctx.fillRect(0, 0, width, height);
+      ctx.clearRect(0, 0, width, height);
 
       ctx.strokeStyle = "#222222";
       ctx.lineWidth = 1.5;

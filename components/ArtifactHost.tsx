@@ -12,7 +12,7 @@ export default function ArtifactHost({ artifactId, alt }: ArtifactHostProps) {
 
   if (!Artifact) {
     return (
-      <div className="w-full aspect-square bg-background flex items-center justify-center text-foreground-muted text-sm p-4">
+      <div className="w-full aspect-square bg-background-subtle flex items-center justify-center text-foreground-muted text-sm p-4">
         Artifact not found: {artifactId}
       </div>
     );
@@ -20,7 +20,7 @@ export default function ArtifactHost({ artifactId, alt }: ArtifactHostProps) {
 
   return (
     <div
-      className="w-full aspect-square bg-background flex items-center justify-center"
+      className="w-full aspect-square bg-background-subtle flex items-center justify-center"
       role="img"
       aria-label={alt || `Artifact ${artifactId}`}
     >
