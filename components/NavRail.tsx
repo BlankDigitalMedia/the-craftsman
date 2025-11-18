@@ -47,7 +47,7 @@ export default function NavRail({
     if (!currentChapter) return [];
     const currentIndex = chapters.findIndex((ch) => ch.id === currentChapter.id);
     if (currentIndex === -1) return [];
-    
+
     const upcoming = chapters.slice(currentIndex + 1, currentIndex + 6);
     // Filter out introduction/conclusion from upcoming chapters
     return upcoming.filter((ch) => ch.slug !== "introduction" && ch.slug !== "conclusion");
@@ -61,9 +61,9 @@ export default function NavRail({
       <aside className="hidden lg:flex fixed left-0 top-0 h-full w-16 flex-col items-center py-8 z-10">
         <div className="flex flex-col items-center gap-4">
           {/* Book Title - Vertical */}
-          <div className="writing-vertical-rl text-xs font-sans font-semibold text-foreground/60 uppercase tracking-wider">
+          <h1 className="writing-vertical-rl text-xs font-sans font-semibold text-foreground/60 uppercase tracking-wider">
             THE CRAFTSMAN&apos;S WAY
-          </div>
+          </h1>
 
           {/* Current Part/Section Label - Vertical */}
           {currentPart && (
@@ -110,8 +110,16 @@ export default function NavRail({
       {/* Full TOC Overlay */}
       {showTOC && (
         <div
-          className="fixed inset-0 bg-background/95 backdrop-blur-sm z-50 overflow-y-auto"
+          role="button"
+          tabIndex={0}
+          className="fixed inset-0 bg-background/95 backdrop-blur-sm z-50 overflow-y-auto cursor-default"
           onClick={() => setShowTOC(false)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              setShowTOC(false);
+            }
+          }}
+          aria-label="Close table of contents"
         >
           <div className="max-w-2xl mx-auto py-24 px-8">
             <div className="mb-16">
@@ -127,11 +135,11 @@ export default function NavRail({
                 <div>
                   <button
                     onClick={() => handleClick(introduction.slug)}
-                    className={`text-left text-base font-serif transition-colors hover:text-foreground ${
-                      activeSlug === introduction.slug
+                    aria-current={activeSlug === introduction.slug ? "page" : undefined}
+                    className={`text-left text-base font-serif transition-colors hover:text-foreground ${activeSlug === introduction.slug
                         ? "font-semibold text-foreground"
                         : "text-foreground-muted"
-                    }`}
+                      }`}
                   >
                     {introduction.label}
                   </button>
@@ -151,11 +159,11 @@ export default function NavRail({
                         <li key={chapter.id}>
                           <button
                             onClick={() => handleClick(chapter.slug)}
-                            className={`text-left text-base font-serif transition-colors hover:text-foreground ${
-                              activeSlug === chapter.slug
+                            aria-current={activeSlug === chapter.slug ? "page" : undefined}
+                            className={`text-left text-base font-serif transition-colors hover:text-foreground ${activeSlug === chapter.slug
                                 ? "font-semibold text-foreground"
                                 : "text-foreground-muted"
-                            }`}
+                              }`}
                           >
                             <span className="text-xs font-mono mr-2">{chapter.label}</span>
                             {chapter.title}
@@ -170,11 +178,11 @@ export default function NavRail({
                 <div>
                   <button
                     onClick={() => handleClick(conclusion.slug)}
-                    className={`text-left text-base font-serif transition-colors hover:text-foreground ${
-                      activeSlug === conclusion.slug
+                    aria-current={activeSlug === conclusion.slug ? "page" : undefined}
+                    className={`text-left text-base font-serif transition-colors hover:text-foreground ${activeSlug === conclusion.slug
                         ? "font-semibold text-foreground"
                         : "text-foreground-muted"
-                    }`}
+                      }`}
                   >
                     {conclusion.label}
                   </button>
@@ -186,8 +194,8 @@ export default function NavRail({
       )}
 
       {/* Mobile Navigation */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-sm border-b border-foreground/10 z-20">
-        <div className="flex flex-col px-4 py-2 gap-1.5">
+      <header className="lg:hidden fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-sm border-b border-foreground/10 z-20">
+        <nav className="flex flex-col px-4 py-2 gap-1.5">
           <div className="text-xs font-sans font-semibold text-foreground uppercase tracking-wider truncate">
             THE CRAFTSMAN&apos;S WAY
           </div>
@@ -196,8 +204,8 @@ export default function NavRail({
               {currentChapter.label} {currentChapter.title}
             </div>
           )}
-        </div>
-      </div>
+        </nav>
+      </header>
     </>
   );
 }

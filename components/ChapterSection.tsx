@@ -11,7 +11,7 @@ interface ChapterSectionProps {
 
 export default function ChapterSection({ chapter, parts }: ChapterSectionProps) {
   const part = chapter.partId ? parts.find((p) => p.id === chapter.partId) : null;
-  
+
   const currentIndex = chapters.findIndex((ch) => ch.id === chapter.id);
   const prevChapter = currentIndex > 0 ? chapters[currentIndex - 1] : null;
   const nextChapter = currentIndex < chapters.length - 1 ? chapters[currentIndex + 1] : null;
@@ -77,7 +77,10 @@ export default function ChapterSection({ chapter, parts }: ChapterSectionProps) 
           {/* Right zone: Artwork */}
           <div className="lg:col-span-5 flex items-center justify-center lg:justify-end order-1 lg:order-2">
             <div className="w-full max-w-md">
-              <ArtifactHost artifactId={chapter.artifactId} />
+              <ArtifactHost
+                artifactId={chapter.artifactId}
+                alt={chapter.visualizationDescription || `Illustration for ${chapter.title}`}
+              />
             </div>
           </div>
         </div>

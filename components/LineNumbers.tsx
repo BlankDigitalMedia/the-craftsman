@@ -49,7 +49,7 @@ export default function LineNumbers({ elementId }: LineNumbersProps) {
   }, [elementId]);
 
   return (
-    <div className="hidden lg:block absolute left-0 top-0 h-full w-12 text-right pr-2 font-mono text-xs text-foreground/20 select-none pointer-events-none">
+    <div aria-hidden="true" className="hidden lg:block absolute left-0 top-0 h-full w-12 text-right pr-2 font-mono text-xs text-foreground/20 select-none pointer-events-none">
       {Array.from({ length: lineCount }, (_, i) => (
         <div key={i} className="leading-[1.8]">
           {(i + 1).toString().padStart(2, "0")}

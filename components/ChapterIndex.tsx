@@ -47,11 +47,11 @@ export default function ChapterIndex({ chapters, parts, activeSlug }: ChapterInd
           <li>
             <button
               onClick={() => handleClick(introduction.slug)}
-              className={`text-left text-sm transition-colors hover:text-foreground ${
-                activeSlug === introduction.slug
+              aria-current={activeSlug === introduction.slug ? "page" : undefined}
+              className={`text-left text-sm transition-colors hover:text-foreground ${activeSlug === introduction.slug
                   ? "font-bold text-foreground"
                   : "text-foreground-muted"
-              }`}
+                }`}
             >
               {introduction.label}
             </button>
@@ -71,11 +71,11 @@ export default function ChapterIndex({ chapters, parts, activeSlug }: ChapterInd
                   <li key={chapter.id}>
                     <button
                       onClick={() => handleClick(chapter.slug)}
-                      className={`text-left text-sm transition-colors hover:text-foreground ${
-                        activeSlug === chapter.slug
+                      aria-current={activeSlug === chapter.slug ? "page" : undefined}
+                      className={`text-left text-sm transition-colors hover:text-foreground ${activeSlug === chapter.slug
                           ? "font-bold text-foreground"
                           : "text-foreground-muted"
-                      }`}
+                        }`}
                     >
                       {chapter.label}
                     </button>
@@ -89,11 +89,11 @@ export default function ChapterIndex({ chapters, parts, activeSlug }: ChapterInd
           <li>
             <button
               onClick={() => handleClick(conclusion.slug)}
-              className={`text-left text-sm transition-colors hover:text-foreground ${
-                activeSlug === conclusion.slug
+              aria-current={activeSlug === conclusion.slug ? "page" : undefined}
+              className={`text-left text-sm transition-colors hover:text-foreground ${activeSlug === conclusion.slug
                   ? "font-bold text-foreground"
                   : "text-foreground-muted"
-              }`}
+                }`}
             >
               {conclusion.label}
             </button>

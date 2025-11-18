@@ -17,31 +17,31 @@ export default function Home() {
       }
     };
 
-    const handleScroll = () => {
-      const sections = chapters.map((ch) => {
-        const element = document.getElementById(ch.slug);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return { slug: ch.slug, top: rect.top, bottom: rect.bottom };
-        }
-        return null;
-      }).filter(Boolean) as { slug: string; top: number; bottom: number }[];
-
-      const current = sections.find(
-        (s) => s.top <= 200 && s.bottom >= 200
-      );
-      if (current) {
-        setActiveSlug(current.slug);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSlug(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: "-20% 0px -50% 0px",
+        threshold: 0,
       }
-    };
+    );
+
+    chapters.forEach((ch) => {
+      const element = document.getElementById(ch.slug);
+      if (element) observer.observe(element);
+    });
 
     handleHashChange();
     window.addEventListener("hashchange", handleHashChange);
-    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("hashchange", handleHashChange);
-      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
     };
   }, []);
 
