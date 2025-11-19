@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Courier_Prime, Crimson_Pro, Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const courierPrime = Courier_Prime({
@@ -34,6 +35,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${courierPrime.variable} ${crimsonPro.variable} ${inter.variable} antialiased`}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
