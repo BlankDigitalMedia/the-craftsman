@@ -3,6 +3,8 @@
 import { Chapter, Part } from "@/lib/types";
 import ArtifactHost from "./ArtifactHost";
 import { chapters } from "@/lib/chapters";
+import { motion, useInView } from "motion/react";
+import { useRef } from "react";
 
 interface ChapterSectionProps {
   chapter: Chapter;
@@ -26,6 +28,13 @@ export default function ChapterSection({ chapter, parts }: ChapterSectionProps) 
     }
   };
 
+  // Refs for scroll detection
+  const textRef = useRef(null);
+  const isTextInView = useInView(textRef, { once: false, amount: 0.2 });
+
+  const imageRef = useRef(null);
+  const isImageInView = useInView(imageRef, { once: false, amount: 0.2 });
+
   return (
     <section
       id={chapter.slug}
@@ -33,15 +42,23 @@ export default function ChapterSection({ chapter, parts }: ChapterSectionProps) 
     >
       <div className="max-w-6xl mx-auto flex-1 flex flex-col py-4 md:py-6 lg:py-8">
         <div
-          className={`flex-1 flex flex-col ${
-            isIntroduction ? "justify-start" : "justify-center"
-          }`}
+          className={`flex-1 flex flex-col ${isIntroduction ? "justify-start" : "justify-center"
+            }`}
         >
           {/* Two-zone spread layout: text-left, art-right */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 lg:items-center">
             {/* Left zone: Text content */}
-            <div className="lg:col-span-7 relative order-2 lg:order-1 flex flex-col lg:justify-center min-h-0 overflow-hidden">
-              <div id={`content-${chapter.slug}`} className="w-full flex flex-col overflow-hidden">
+            <div
+              ref={textRef}
+              className="lg:col-span-7 relative order-2 lg:order-1 flex flex-col lg:justify-center min-h-0 overflow-hidden"
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isTextInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                id={`content-${chapter.slug}`}
+                className="w-full flex flex-col overflow-hidden"
+              >
                 {/* Compact heading stack */}
                 <div className="mb-3 md:mb-4 flex-shrink-0">
                   {part && (
@@ -73,17 +90,25 @@ export default function ChapterSection({ chapter, parts }: ChapterSectionProps) 
                     </p>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             {/* Right zone: Artwork */}
-            <div className="lg:col-span-5 flex items-center justify-center lg:justify-end order-1 lg:order-2">
-              <div className="w-[min(70vw,40svh)] sm:w-full max-w-md">
+            <div
+              ref={imageRef}
+              className="lg:col-span-5 flex items-center justify-center lg:justify-end order-1 lg:order-2"
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isImageInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 1.0, ease: "easeOut", delay: 0.2 }}
+                className="w-[min(70vw,40svh)] sm:w-full max-w-md"
+              >
                 <ArtifactHost
                   artifactId={chapter.artifactId}
                   alt={chapter.visualizationDescription || `Illustration for ${chapter.title}`}
                 />
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
