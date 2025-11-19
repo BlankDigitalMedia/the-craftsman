@@ -32,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${courierPrime.variable} ${crimsonPro.variable} ${inter.variable} antialiased`}>
         {children}
         <Analytics />
